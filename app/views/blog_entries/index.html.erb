@@ -19,21 +19,24 @@
         </div>
       </div>
     </div>
-    <div class="container">
 
-<div class="container-fluid">
-  <div class="row-fluid">
-    <div class="span2">
-      <%= form_for :blog_entry do |f| %> 
-      <div>
-        <%= f.label :title %>   
-        <%= f.text_field :title %>
-        <%= f.label :body %>
-        <%= f.text_field :body %>
-          <span>
+<div class="container">
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="row-fluid">
+        <div class="span-fluid offset4">
+          <%= form_for :blog_entry do |f| %> 
+      
+          <%= f.label :title %>   
+          <%= f.text_field :title %>
+          <%= f.label :body %>
+          <%= f.text_field :body %>
+          <div>
             <%= f.submit 'Save', class: "btn btn-default btn-primary" %>
-          </span>
-        <% end %>
+          </div>
+          <% end %>
+        </div>
       </div>
+    </div>
   </div>
 </div>

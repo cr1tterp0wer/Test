@@ -1,17 +1,12 @@
 
 
-<div class="row">
-  <div class="span3">
+<div class="row-fluid">
+  <div class="span4">
   	<h1><strong><%= @blog_entry.title %></strong></h1>
 	<p><%= @blog_entry.body %></p>
-	<div><%= button_to 'Delete-User', @del_entry, :method => :delete, data: { confirm: 'Are you sure?'}, class: "btn btn-default btn-primary" %></div>
-	<span><%= link_to "Back", blog_entries_path %></span>
-  </div>
-</div>
+	<div><%= button_to 'Delete-User', @del_entry, :method => :delete, data: { confirm: 'Are you sure?'}, class: "btn btn-mini btn-default" %></div>
 
-
-
-<span>
+  <span>
     <%= form_for ([@blog_entry, @blog_entry.comments.build]) do |f| %>
 	  <p>
 	    <%= f.label :commenter %><br />
@@ -22,22 +17,25 @@
 	    <%= f.text_field :body %> <br />
 	    <%= f.submit 'Submit', class: "btn btn-default btn-primary" %>
 	  </p>
+	  <p><%= link_to "Back", blog_entries_path %></p>
     <% end %>
-</span>
+  </span>
 
+  </div>
 
-
-	<!--change from table to float/span/somethingElse-->
-<div>
-     <% @blog_entry.comments.reload.each do |x| %>
-
-    	<table border="0" align="center">
-            <tr><th style="background-color:lightgreen"><%= x.commenter %></th></tr> <br />
-            <tr><td><%= x.body %>  
-
-
-            <tr><td><%= link_to "Destroy", blog_entry_comment_path(:blog_entry_id => @blog_entry.id, :id => x.id), :confirm => 'Are you sure?', :method => :delete %></td> 
-          <% end %>
-
-        </table>
+<!--change from table-->
+  <span class="span5">
+    <div class="hero-unit">
+	  <% @blog_entry.comments.reload.each do |x| %>
+      <h3><%= x.body %></h1>
+      <p>@<%= x.commenter %></p>
+        <p>
+        <%= link_to "Destroy", blog_entry_comment_path(:blog_entry_id => @blog_entry.id, :id => x.id), :confirm => 'Are you sure?', :method => :delete, class: "btn btn-default btn-small" %>
+        </p>
+      <% end %>
+    </div>
+  </span>
 </div>
+
+
+
