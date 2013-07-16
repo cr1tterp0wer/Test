@@ -4,7 +4,9 @@
   <div class="span4">
   	<h1 style="color:cornflowerblue"><strong><%= @blog_entry.title %></strong></h1>
 	<p style="color:cornflowerblue"><%= @blog_entry.body %></p>
-	<div><%= button_to 'Delete-User', @del_entry, :method => :delete, data: { confirm: 'Are you sure?'}, class: "btn btn-mini btn-default" %></div>
+	  <div>
+		<%= button_to 'Delete-User', @del_entry, :method => :delete, data: { confirm: 'Are you sure?'}, class: "btn btn-mini btn-default" %>
+	  </div>
       <span>
         <%= form_for ([@blog_entry, @blog_entry.comments.build]) do |f| %>
 	      <p>
@@ -19,9 +21,8 @@
 	    <p><%= link_to "Back", blog_entries_path %></p>
         <% end %>
       </span>
-</div>
+  </div>
 
-<!--change from table-->
   <span class="span5">
     <div class="hero-unit">
 	  <% @blog_entry.comments.reload.each do |x| %>
