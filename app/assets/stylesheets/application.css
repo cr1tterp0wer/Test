@@ -13,17 +13,16 @@
  
  	line-height: 10em;
  */
-
-.span1{
-
-	width: 60px;
-}
-
-.span2{
-	width: 80px;
-}
-
-.span3{
-	width:120px;
-}
-
+.outer {
+    width: 100px;
+    height: 200px;
+    padding: 0;
+    border: 1px solid #000;
+    vertical-align: middle;
+    display: inline-block; }
+.inner {
+    background: red;
+    width: 30px;
+    height: 20px;    
+    vertical-align: middle;
+    display: inline-block; }
