@@ -53,7 +53,7 @@ Test::Application.routes.draw do
       resources :comments
     end
 
-   root :to => 'home#index'
+   root :to => 'blog_entries#index'
 
   # See how all your routes lay out with "rake routes"
 
