@@ -1,16 +1,39 @@
+<div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
 
-<div class="row-fluid">
-    <div class="span"><%= form_for :blog_entry do |f| %> <div>
-  <%= f.label :title %> 	
-  <%= f.text_field :title %>
-  <%= f.label :body %>
-  <%= f.text_field :body %>
-  <%= f.submit 'Save', class: "btn btn-default btn-primary" %>
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
 
-  <% end %>
-  <div>
-      <%  @blog_all.each  do |x|  %>
-      <p><%= link_to x.title , x %></p>
-      <% end %>
+          <a class="brand" href="/blog_entries#index">Critter's Blog</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="active"><a href= "/blog_entries#index">Home</a></li>
+              <%  @blog_all.each  do |x|  %>
+              <li><%= link_to x.title , x, class: "active" %></li>
+              <% end %>
+            </ul>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span2">
+      <%= form_for :blog_entry do |f| %> 
+      <div>
+        <%= f.label :title %>   
+        <%= f.text_field :title %>
+        <%= f.label :body %>
+        <%= f.text_field :body %>
+          <span>
+            <%= f.submit 'Save', class: "btn btn-default btn-primary" %>
+          </span>
+        <% end %>
+      </div>
   </div>
 </div>
