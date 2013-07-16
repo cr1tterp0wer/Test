@@ -1,0 +1,31 @@
+
+<div class="head_line" id="head_line_center">
+	<h1>My Blog</h1>
+</div>
+
+
+  <table border="10"; align="center">
+   <tr>
+     <th class="white_link"><%= link_to "HOME", :root %></th>
+     <th class="black_link">ENTRIES</th> 
+   </tr>
+  </table>
+
+<div class="title_body_form"> <br/>
+  <%= form_for :blog_entry do |f| %>
+     <%= f.label :title %> 	
+     <%= f.text_field :title %>
+     <br />
+     <%= f.label :body %>
+     <%= f.text_field :body %>
+     <br />
+     <br />
+     <%= f.submit 'Save' %>
+     <% end %>
+
+  <div class="users">
+    <%  @blog_all.each  do |x|  %>
+      <p><%= link_to x.title , x %></p>
+    <% end %>
+  </div>
+</div>

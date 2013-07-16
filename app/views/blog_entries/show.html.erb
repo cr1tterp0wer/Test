@@ -1,0 +1,33 @@
+<div class="head_line">
+	<h1 ><strong><%= @blog_entry.title.capitalize %></strong></h1>
+	<p><%= @blog_entry.body %></p>
+	<div class="button"><%= button_to 'Delete-User', @del_entry, :method => :delete, data: { confirm: 'Are you sure?'} %></div>
+	<span><%= link_to "Back", blog_entries_path %></span>
+</div>
+
+<span class="title_body_form">
+    <%= form_for ([@blog_entry, @blog_entry.comments.build]) do |f| %>
+	  <p>
+	    <%= f.label :commenter %><br />
+	    <%= f.text_field :commenter %>
+	  </p>
+	  <p>
+	    <%= f.label :body %> <br />
+	    <%= f.text_field :body %> <br />
+	    <%= f.submit 'Submit' %>
+	  </p>
+    <% end %>
+</span>
+
+<div>
+     <% @blog_entry.comments.reload.each do |x| %>
+    	<table border="0" class="comments" align="center">
+            <tr><th style="background-color:lightgreen"><%= x.commenter %></th></tr> <br />
+            <tr><td><%= x.body %>  
+
+
+            <tr><td><%= link_to "Destroy", blog_entry_comment_path(:blog_entry_id => @blog_entry.id, :id => x.id), :confirm => 'Are you sure?', :method => :delete %></td> 
+          <% end %>
+
+        </table>
+</div>
