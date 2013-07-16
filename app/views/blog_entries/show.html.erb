@@ -1,11 +1,13 @@
-<div class="head_line">
-	<h1 ><strong><%= @blog_entry.title.capitalize %></strong></h1>
+<div>
+	<br />
+	<br />
+	<h1><strong><%= @blog_entry.title %></strong></h1>
 	<p><%= @blog_entry.body %></p>
-	<div class="button"><%= button_to 'Delete-User', @del_entry, :method => :delete, data: { confirm: 'Are you sure?'} %></div>
+	<div><%= button_to 'Delete-User', @del_entry, :method => :delete, data: { confirm: 'Are you sure?'}, class: "btn btn-default btn-primary" %></div>
 	<span><%= link_to "Back", blog_entries_path %></span>
 </div>
 
-<span class="title_body_form">
+<span>
     <%= form_for ([@blog_entry, @blog_entry.comments.build]) do |f| %>
 	  <p>
 	    <%= f.label :commenter %><br />
@@ -14,14 +16,15 @@
 	  <p>
 	    <%= f.label :body %> <br />
 	    <%= f.text_field :body %> <br />
-	    <%= f.submit 'Submit' %>
+	    <%= f.submit 'Submit', class: "btn btn-default btn-primary" %>
 	  </p>
     <% end %>
 </span>
-
+	
 <div>
      <% @blog_entry.comments.reload.each do |x| %>
-    	<table border="0" class="comments" align="center">
+
+    	<table border="0" align="center">
             <tr><th style="background-color:lightgreen"><%= x.commenter %></th></tr> <br />
             <tr><td><%= x.body %>  
 
