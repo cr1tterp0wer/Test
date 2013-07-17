@@ -11,15 +11,13 @@ class BlogEntriesController < ApplicationController
 
     def create
       @blog_entry = BlogEntry.new(params[:blog_entry])
-    	@blog_entry.save
-
+      @blog_entry.save
       redirect_to :blog_entries 
-    end
+     end
 
     def destroy
       @del_entry = BlogEntry.find(params[:id])
       @del_entry.destroy
-
       redirect_to :blog_entries
     end
 end

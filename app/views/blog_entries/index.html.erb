@@ -1,37 +1,37 @@
 <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-
-          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-
-          <a class="brand" href="/blog_entries#index">Critter's Blog</a>
+  <div class="navbar-inner">
+    <div class="container">
+      <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+        <a class="brand" href="/blog_entries#index">Community Blog</a>
           <div class="nav-collapse collapse">
-            <ul class="nav">
+            <ul class="nav nav-pills red">
               <li class="active"><a href= "/blog_entries#index">Home</a></li>
               <%  @blog_all.each  do |x|  %>
               <li><%= link_to x.title , x, class: "active" %></li>
               <% end %>
             </ul>
+          </div>
+    </div>
+  </div> 
+</div>
+
+    <div class="container">
+      <div class="container-fluid"> <br /> <br />
+        <div class="row-fluid offset4">
+              <%= form_for :blog_entry do |f| %> 
+              <%= f.label :title %>   
+              <%= f.text_field :title %>
+              <%= f.label :body %>
+              <%= f.text_field :body %>
+              <div class="row-fluid">
+                  <%= f.submit 'Save', class: "btn btn-default btn-primary centers" %>
+                <% end %>
+              </div>
         </div>
       </div>
     </div>
 
-<div class="container">
-  <span class="container-fluid"> <br /> <br />
-    <div class="row-fluid offset4">
-          <%= form_for :blog_entry do |f| %> 
-          <%= f.label :title %>   
-          <%= f.text_field :title %>
-          <%= f.label :body %>
-          <%= f.text_field :body %>
-          <div class="row-fluid">
-            <%= f.submit 'Save', class: "btn btn-default btn-primary centers" %>
-            <% end %>
-          </div>
-    </div>
-  </span>
-</div>
