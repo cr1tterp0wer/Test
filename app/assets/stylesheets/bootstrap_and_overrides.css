@@ -13,11 +13,6 @@ display: inline-block;
 word-wrap: break-word;
 }
 
-.wrapping2{
-max-width:300px;
-word-wrap:break-word; 
-}
-
   .centers {
  vertical-align: center;
  margin:0, auto;

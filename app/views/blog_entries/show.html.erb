@@ -1,6 +1,6 @@
 
 <div class="row-fluid">
-  <div class="span3">
+  <span class="span3">
     <h1 style="color:cornflowerblue;"><strong><%= @blog_entry.title %></strong></h1>
     <p style="color:cornflowerblue; word-wrap:break-word"><%= @blog_entry.body %></p>
       <div class="row-fluid">
@@ -10,6 +10,7 @@
             <%= f.label :commenter %><br />
             <%= f.text_field :commenter %>
           </p>
+
           <p>
             <%= f.label :body %> <br />
             <%= f.text_field :body %> <br />
@@ -18,14 +19,15 @@
           <p><%= link_to "Back", blog_entries_path %></p>
         <% end %>
       </div>
-  </div>
+  </span>
 
-  <span class="hero-unit span6 wrapping2">
+
+  <span class="hero-unit span6 wrapping">
+    <h3 style="color:cornflowerblue">Comments</h3>
+    <span class="label label-info pull-right"><%= @blog_entry.comments.count %> Comments</span><br />
     <% @blog_entry.comments.reload.each do |x| %>
-      <h3><%= x.body %></h3>
-      <p>@<%= x.commenter %></p>
-      <p><%= link_to "Delete", blog_entry_comment_path(:blog_entry_id => @blog_entry.id, :id => x.id), :method => :delete, class: "btn btn-default btn-small" %></p>
+      <h4><%= x.body %></h4>
+      <p>@<%= x.commenter %><%= link_to "Delete", blog_entry_comment_path(:blog_entry_id => @blog_entry.id, :id => x.id), :method => :delete, class: "btn btn-default btn-small pull-right" %></p>
     <% end %>
-    <p style="color:cornflowerblue;"><%= @blog_entry.comments.count %> comments </p>
   </span>
 </div>
