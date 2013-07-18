@@ -6,6 +6,9 @@
   =require twitter-bootstrap-static/fontawesome
   */
 
+#content{
+ margin-top: 60px;
+}
 
 .wrapping{
 width: 70%;
