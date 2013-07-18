@@ -23,6 +23,9 @@ class BlogEntriesController < ApplicationController
 
     def home_link
       @blog_all = BlogEntry.all
+      @blog_entry = BlogEntry.new(params[:blog_entry])
+      @blog_entry.save
+
     end
 
 end
