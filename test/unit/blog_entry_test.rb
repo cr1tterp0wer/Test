@@ -7,7 +7,7 @@ class BlogEntryTest < ActiveSupport::TestCase
       @blog_entry.title = "mash"
     end
 
-    should "look like the mash logo" do
+    should "look like the mash logo" 
       assert_equal "M*A*S*H", @blog_entry.mashify!
     end
 
