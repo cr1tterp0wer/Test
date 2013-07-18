@@ -13,4 +13,14 @@ class BlogEntryTest < ActiveSupport::TestCase
     blog_entry.title = "sh*t"
     assert_equal "S*H*!*T", blog_entry.mashify!
   end
+
+  test '#dashify!' do
+	  blog_entry = BlogEntry.new
+
+	  blog_entry.title = "foo"
+	  assert_equal "F-O-O", blog_entry.dashify!
+
+	  blog_entry.title = 'f-o'
+	  assert_equal "F-*-O", blog_entry.dashify!
+  end
 end

@@ -9,4 +9,8 @@ class BlogEntry < ActiveRecord::Base
     self.title.upcase.gsub('*', '!').chars.join('*')
   end
 
+  def dashify!
+  	self.title.upcase.gsub('-','*').chars.join('-')
+  end
+
 end
