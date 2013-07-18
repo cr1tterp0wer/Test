@@ -6,7 +6,7 @@ class BlogEntry < ActiveRecord::Base
  					length: { minimum: 1}
   
   def mashify!
-    self.title.upcase.gsub('*', '!').chars.join('*')
+    self.title.upcase.gsub('*', '!').strip.chars.join('*')
   end
 
   def dashify!

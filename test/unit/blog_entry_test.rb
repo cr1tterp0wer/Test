@@ -1,17 +1,25 @@
 require 'test_helper'
 
 class BlogEntryTest < ActiveSupport::TestCase
-  test "#mashify!" do
-  	blog_entry = BlogEntry.new
+  context "#mashify!" do
+    setup do
+      @blog_entry = BlogEntry.new
+      @blog_entry.title = "mash"
+    end
 
-  	blog_entry.title = "mash"
-    assert_equal "M*A*S*H", blog_entry.mashify!
+    should "look like the mash logo" do
+      assert_equal "M*A*S*H", @blog_entry.mashify!
+    end
 
-    blog_entry.title = "chips"
-    assert_equal "C*H*I*P*S", blog_entry.mashify!
+    should "replace * with !" do
+      @blog_entry.title = "sh*t"
+      assert_equal "S*H*!*T", @blog_entry.mashify!
+    end
 
-    blog_entry.title = "sh*t"
-    assert_equal "S*H*!*T", blog_entry.mashify!
+    should "remove whitespace" do
+      @blog_entry.title = "        mash         "
+      assert_equal "M*A*S*H", @blog_entry.mashify!
+    end
   end
 
   test '#dashify!' do
