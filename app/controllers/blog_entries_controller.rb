@@ -22,9 +22,13 @@ class BlogEntriesController < ApplicationController
     end
 
     def destroy
-      @del_entry = BlogEntry.find(params[:id])
-      @del_entry.destroy
-     end
+      if @del_entry = BlogEntry.find_by_id(params[:id])
+        @del_entry.destroy
+        redirect_to blog_entries_path
+      else
+        render :inline => "Not found", :status => 404
+      end  
+    end
 
     def home_link
       @blog_all = BlogEntry.all
