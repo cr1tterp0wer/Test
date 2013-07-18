@@ -1,10 +1,10 @@
 <div class="row centers">
   <div class="span12 centers">
-    <legend style="color:cornflowerblue;text-align:center"><strong>All Current Bloggers</strong></legend>
+    <legend class="blue-wrap" id="align"><strong>All Current Bloggers</strong></legend>
     <span>
         <ul class="nav nav-pills offset1">
           <% @blog_all.each do |f| %>
-            <li class="span3" style="text-align:center">
+            <li class="span3" id="align">
              <a href=<%= f.id %> ><h4><%= f.title %></h4></a>
             </li>
       	  <% end %>

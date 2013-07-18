@@ -6,8 +6,23 @@
   =require twitter-bootstrap-static/fontawesome
   */
 
-#content{
- margin-top: 60px;
+
+div {
+	color:cornflowerblue;
+}
+
+.hero-unit{
+background-color: lightblue;
+}
+
+.form-actions{
+	background-color:lightgray;
+}
+
+
+.blue-wrap{
+	color:cornflowerblue;
+    word-wrap:break-word;
 }
 
 .wrapping{
@@ -16,9 +31,22 @@ display: inline-block;
 word-wrap: break-word;
 }
 
-  .centers {
+.centers {
  vertical-align: center;
  margin:0, auto;
  margin-left:auto;
  margin-right:auto;
 }
+
+#content{
+ margin-top: 60px;
+}
+
+#align {
+	text-align: center;
+}
+
+#child-hero{
+background-color: white;
+}
+

@@ -1,40 +1,37 @@
-
-<div class="hero-unit row-fluid" style="background:lightblue">
+<div class="hero-unit row-fluid">
   <span class="span3">
-    <h1 style="color:cornflowerblue;"><strong><%= @blog_entry.title %></strong></h1>
-    <p style="color:cornflowerblue; word-wrap:break-word"><%= @blog_entry.body %></p>
+    <h1><%= @blog_entry.title %></h1>
+    <p class="blue-wrap"><%= @blog_entry.body %></p>
       <div class="row-fluid">
         <%= button_to 'Delete-User', @del_entry, :method => :delete, data: { confirm: 'Are you sure?'}, class: "btn btn-mini btn-default" %>
         <%= form_for ([@blog_entry, @blog_entry.comments.build]) do |f| %>
           <p>
-            <%= f.label :commenter %><br />
+            <%= f.label :commenter %>
             <%= f.text_field :commenter %>
           </p>
 
           <p>
-            <%= f.label :body %> <br />
-            <%= f.text_field :body %> <br />
+            <%= f.label :body %> 
+            <%= f.text_field :body %>
             <%= f.submit 'Submit', class: "btn btn-default btn-primary" %>
           </p>
-          <p><%= link_to "Back", blog_entries_path %></p>
+          <p><%= link_to "Back", blog_entries_homelink_path %></p>
         <% end %>
       </div>
   </span>
 
-  <span class="hero-unit span6 wrapping">
+  <span class="hero-unit span6 wrapping" id="child-hero">
     <div class="hero-unit wrapping">
-      <p style="color:cornflowerblue; word-wrap:break-word"><%= @blog_entry.body %></p>
+      <p class="blue-wrap"><%= @blog_entry.body %></p>
     </div>
-   
     <legend>
-      <h3 style="color:cornflowerblue">Comments</h3>
+      <h3 class="blue-wrap">Comments</h3>
     </legend>
-    <span class="label label-info pull-right"><%= @blog_entry.comments.count %> Comments</span><br />
+    <span class="label label-info pull-right"><%= @blog_entry.comments.count %> Comments</span>
     <% @blog_entry.comments.reload.each do |x| %>
       <h4><%= x.body %></h4>
-      <p style="color:cornflowerblue">@<%= x.commenter %><%= link_to "Delete", blog_entry_comment_path(:blog_entry_id => @blog_entry.id, :id => x.id), :method => :delete, class: "btn btn-default btn-small pull-right" %></p>
+      <p class="blue-wrap">@<%= x.commenter %><%= link_to "Delete", blog_entry_comment_path(:blog_entry_id => @blog_entry.id, :id => x.id), :method => :delete, class: "btn btn-default btn-small pull-right" %></p>
     <% end %>
   </span>
 </div>
-
 
