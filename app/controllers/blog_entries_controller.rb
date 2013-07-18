@@ -12,12 +12,14 @@ class BlogEntriesController < ApplicationController
     def create
       @blog_entry = BlogEntry.new(params[:blog_entry])
       @blog_entry.save
-     end
+    
+      redirect_to blog_entries_path
+    end
 
     def destroy
       @del_entry = BlogEntry.find(params[:id])
       @del_entry.destroy
-    end
+     end
 
     def home_link
       @blog_all = BlogEntry.all
