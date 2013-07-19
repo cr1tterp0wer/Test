@@ -40,6 +40,6 @@ protected
   end
 
   def blog_entry_params
-    params.require(:blog_entry).permit(:title, :body)
+    params.require(:blog_entry).permit(:title, :body, :mashify_title, :dashify_title)
   end
 end

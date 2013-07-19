@@ -1,7 +1,7 @@
 class BlogEntry < ActiveRecord::Base
   has_many :comments 
 
-  attr_accessible :body, :title
+  attr_accessible :body, :title, :mashify_title, :dashify_title
   validates :body, :title, presence: true,
  					length: { minimum: 1}
   
