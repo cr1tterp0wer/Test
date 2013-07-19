@@ -11,13 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130712180738) do
+ActiveRecord::Schema.define(:version => 20130719180646) do
 
   create_table "blog_entries", :force => true do |t|
     t.text     "title"
     t.text     "body"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.boolean  "mashify_title"
+    t.boolean  "dashify_title"
   end
 
   create_table "comments", :force => true do |t|
