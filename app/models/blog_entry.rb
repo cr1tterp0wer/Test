@@ -4,13 +4,15 @@ class BlogEntry < ActiveRecord::Base
   attr_accessible :body, :title, :mashify_title, :dashify_title
   validates :body, :title, presence: true,
  					length: { minimum: 1}
+
+
+  def dashify
+    return self.body.upcase.gsub('-','*').chars.join('-')
+  end
   
-  def mashify!
-    self.title.upcase.gsub('*', '!').strip.chars.join('*')
+  def mashify
+    return self.body.upcase.gsub('*', '!').strip.chars.join('*')
   end
 
-  def dashify!
-  	self.title.upcase.gsub('-','*').chars.join('-')
-  end
 
 end
