@@ -18,9 +18,7 @@ class BlogEntry < ActiveRecord::Base
   
   def mashify!
     if(self.mashify_title)
-
-      self.body = self.body.upcase.gsub('*', '!').strip.chars.join('')
-      self.body = self.body.gsub('*', '').strip.chars.join('*')
+      self.body = self.body.upcase.gsub('*', '').strip.chars.join('*')
     else
       self.body = self.body.downcase.gsub('* ', ' ').strip.chars.join('')
       self.body = self.body.gsub(' *', ' ').strip.chars.join('')

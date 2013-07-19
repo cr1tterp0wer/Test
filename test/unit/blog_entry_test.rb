@@ -8,16 +8,10 @@ class BlogEntryTest < ActiveSupport::TestCase
     end
 
     should "look like the mash logo" do
+      @blog_entry.body = "mash"
       @blog_entry.mashify_title = true;
 
       assert_equal "M*A*S*H", @blog_entry.mashify!
-    end
-
-    should "replace * with !" do
-      @blog_entry.body = "sh*t"
-      @blog_entry.mashify_title = true;
-
-      assert_equal "S*H*!*T", @blog_entry.mashify!
     end
 
     should "remove whitespace" do
@@ -76,11 +70,6 @@ class BlogEntryTest < ActiveSupport::TestCase
 
       assert_equal "foo bar", @blog_entry.mash_dash!
     end
-
-
-
-
-
   end
 end
 
