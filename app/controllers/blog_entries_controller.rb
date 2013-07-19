@@ -1,5 +1,5 @@
 class BlogEntriesController < ApplicationController
-  before_filter :require_blog_entry, :only => [:show, :edit, :destroy]
+  before_filter :require_blog_entry, :only => [:show, :update, :edit, :destroy]
   
  	def index
  		@blog_all = BlogEntry.all
@@ -25,6 +25,10 @@ class BlogEntriesController < ApplicationController
   end
  
  def edit
+ end
+
+ def update
+   redirect_to edit_blog_entry_path(id: @blog_entry.id)
  end
 
 protected

@@ -82,6 +82,35 @@ class BlogEntriesControllerTest < ActionController::TestCase
       assert_response 200
     end
   end
+
+  context "#update" do
+    setup do
+      @blog_entry = BlogEntry.create :title => 'foo', :body => 'bar'
+    end
+
+#    should "update an entry" do
+ #     put :update, :id => @blog_entry.id 
+ #     assert @blog_entry.title == "hello"
+ #   end
+ 
+      should "redirect back to edit" do
+        put :update, :id => @blog_entry.id
+        assert_redirected_to edit_blog_entry_path(id: @blog_entry.id)
+      end 
+  end
+
 end
+
+
+
+
+
+
+
+
+
+
+
+
 
 
