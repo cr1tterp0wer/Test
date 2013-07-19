@@ -88,13 +88,14 @@ class BlogEntriesControllerTest < ActionController::TestCase
       @blog_entry = BlogEntry.create :title => 'foo', :body => 'bar'
     end
 
-#    should "update an entry" do
- #     put :update, :id => @blog_entry.id 
- #     assert @blog_entry.title == "hello"
- #   end
+    should "update an entry" do
+      put :update, {:id => @blog_entry.id, :blog_entry => {:title => 'hello', :body => 'yeah'}} 
+
+      assert_equal "hello", @blog_entry.reload.title
+    end
  
       should "redirect back to edit" do
-        put :update, :id => @blog_entry.id
+        put :update, {:id => @blog_entry.id, :blog_entry => {:title => 'hello', :body => 'yeah'}} 
         assert_redirected_to edit_blog_entry_path(id: @blog_entry.id)
       end 
   end

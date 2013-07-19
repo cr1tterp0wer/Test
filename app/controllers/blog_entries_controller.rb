@@ -28,7 +28,8 @@ class BlogEntriesController < ApplicationController
  end
 
  def update
-   redirect_to edit_blog_entry_path(id: @blog_entry.id)
+    @blog_entry.update_attributes(blog_entry_params)
+    redirect_to edit_blog_entry_path(id: @blog_entry.id)
  end
 
 protected
@@ -38,4 +39,7 @@ protected
     end
   end
 
+  def blog_entry_params
+    params.require(:blog_entry).permit(:title, :body)
+  end
 end
