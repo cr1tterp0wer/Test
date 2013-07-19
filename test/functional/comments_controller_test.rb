@@ -19,17 +19,20 @@ class CommentsControllerTest < ActionController::TestCase
   end
 
   context "#destroy" do
-     setup do
-        @blog_entry = BlogEntry.create :title => 'foo', :body => 'bar'
-        @blog_entry.comments.create( body: "helloworld", commenter: "foo")
-        @count = @blog_entry.comments.count
-      end
+    setup do
+      @blog_entry = BlogEntry.create :title => 'foo', :body => 'bar'
+      @blog_entry.comments.create( body: "helloworld", commenter: "foo")
+    end
 
-      should "delete a comment" do
+    should "delete a comment" do
+      assert_difference("@blog_entry.comments.count", -1) do
         @blog_entry.comments.last.delete
-        assert @count != @blog_entry.comments.count
       end
+      assert BlogEntry.find_by_id(@blog_entry.id).comments.last.nil?
+    end
 
+    should "redirect" do
+    end
     #should "redirect to blog_entry" do
     # end
 
