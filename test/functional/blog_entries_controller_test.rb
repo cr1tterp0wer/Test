@@ -94,19 +94,19 @@ class BlogEntriesControllerTest < ActionController::TestCase
       assert_equal "hello", @blog_entry.reload.title
     end
  
-      should "redirect back to edit" do
-        put :update, {:id => @blog_entry.id, :blog_entry => {:title => 'hello', :body => 'yeah'}} 
-        assert_redirected_to edit_blog_entry_path(id: @blog_entry.id)
-      end 
+    should "redirect back to edit" do
+      put :update, {:id => @blog_entry.id, :blog_entry => {:title => 'hello', :body => 'yeah'}} 
+      assert_redirected_to blog_entry_path(id: @blog_entry.id)
+    end 
 
-      should "toggle dashify/mashify" do
-        
-        put :update,  {:id => @blog_entry.id, :blog_entry => {:title => 'hello', :body => 'yeah', :mashify_title => true, :dashify_title => true}}
+    should "toggle dashify/mashify" do
+      
+      put :update,  {:id => @blog_entry.id, :blog_entry => {:title => 'hello', :body => 'yeah', :mashify_title => true, :dashify_title => true}}
 
-        @blog_entry.reload
-        assert @blog_entry.mashify_title == true
-        assert @blog_entry.dashify_title == true
-      end
+      @blog_entry.reload
+      assert @blog_entry.mashify_title == true
+      assert @blog_entry.dashify_title == true
+    end
   end
 
 end
