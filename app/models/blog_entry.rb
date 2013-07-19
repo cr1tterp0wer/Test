@@ -7,12 +7,15 @@ class BlogEntry < ActiveRecord::Base
 
 
   def dashify
-    return self.body.upcase.gsub('-','*').chars.join('-')
+    if(self.dashify_title)
+      self.body = self.body.upcase.gsub('-','*').strip.chars.join('-')
+    end
   end
   
   def mashify
-    return self.body.upcase.gsub('*', '!').strip.chars.join('*')
+    if(self.mashify_title)
+      self.body = self.body.upcase.gsub('*', '!').strip.chars.join('*')
+    end
   end
-
-
 end
+

@@ -29,17 +29,10 @@ class BlogEntriesController < ApplicationController
 
  def update
     @blog_entry.update_attributes(blog_entry_params)
-
-    if @blog_entry.dashify_title == true
-      @blog_entry.body = @blog_entry.dashify
-      @blog_entry.save
-    end  
-
-    if @blog_entry.mashify_title == true
-      @blog_entry.body = @blog_entry.mashify
-      @blog_entry.save
-    end
-
+    @blog_entry.dashify
+    @blog_entry.mashify
+    @blog_entry.save
+    
     redirect_to blog_entry_path(id: @blog_entry.id)
  end
 
