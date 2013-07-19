@@ -1,7 +1,29 @@
 require 'test_helper'
 
 class CommentsControllerTest < ActionController::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  context "#create" do 
+     setup do
+        @blog_entry = BlogEntry.create :title => 'foo', :body => 'bar'
+      end
+
+    should "create a comment" do
+      assert_difference("Comment.count", +1 ) do 
+        post :create, { blog_entry_id: @blog_entry.id, comment: {body: "me", commenter: "you"} }
+      end
+    end
+
+    should "redirect back to blog_entry" do
+      post :create, { blog_entry_id: @blog_entry.id, comment: {body: "me", commenter: "you"} }
+      assert_redirected_to blog_entry_path @blog_entry 
+    end
+  end
+
+  context "#destroy" do
+     setup do
+        @blog_entry = BlogEntry.create :title => 'foo', :body => 'bar'
+      end
+
+    # should delete the comment
+    # should redirect back to the blog entry 
+  end
 end
