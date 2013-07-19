@@ -72,8 +72,6 @@ class BlogEntriesControllerTest < ActionController::TestCase
     end
   end
 
-
-
   context "#edit" do
     setup do
         @blog_entry = BlogEntry.create :title => 'foo', :body => 'bar'
