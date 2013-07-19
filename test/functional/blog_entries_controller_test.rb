@@ -31,7 +31,7 @@ class BlogEntriesControllerTest < ActionController::TestCase
 
   context "#destroy" do
     should "respond with a 404" do
-      delete :destroy, :id => 'asdfiquwefiou ioawefuio83uf 8389f 3j89f 893 fj893 jf893 j'
+      delete :destroy, :id => 'asdfiquwefiou ioawefuio83uf 8389f 3j89f 893 fj893 jf893'
       assert_response 404
     end
 
@@ -55,5 +55,29 @@ class BlogEntriesControllerTest < ActionController::TestCase
     end
   end
 
+  context "#create" do     
+    should "create a blog entry and redirect to #show" do
+      assert_difference("BlogEntry.count", +1) do
+        post :create, :blog_entry => {:title => "hhh", :body => "rrr" }    
+      end
+
+      assert_redirected_to blog_entry_path(BlogEntry.last.id)
+    end
+  end
+
+  context "#new" do
+    should "render correctly" do
+      get :new 
+      assert_response 200
+    end
+  end
+
+  context "#update" do
+    should "render correctly" do
+
+      assert_response 200
+    end
+  end
 end
+
 

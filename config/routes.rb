@@ -49,9 +49,6 @@ Test::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
 
-
-  match 'blog_entries/homelink' => 'blog_entries#home_link', :controller => 'blog_entry', :action => 'home_link'
-
    resources :blog_entries do  #creates comments as a nested resource within :blog_entries
       resources :comments
     end

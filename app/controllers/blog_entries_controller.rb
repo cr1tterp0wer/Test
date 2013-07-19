@@ -15,9 +15,8 @@ class BlogEntriesController < ApplicationController
 
   def create
     @blog_entry = BlogEntry.new(params[:blog_entry])
-    @blog_entry.save
-  
-    redirect_to blog_entries_path
+    @blog_entry.save!
+    redirect_to blog_entry_path @blog_entry.id
   end
 
   def destroy
@@ -25,9 +24,10 @@ class BlogEntriesController < ApplicationController
     redirect_to blog_entries_path
   end
 
-  def home_link
-    @blog_all = BlogEntry.all
+  def upsdate
+
   end
+
 
 protected
   def require_blog_entry
