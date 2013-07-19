@@ -1,5 +1,5 @@
 class BlogEntriesController < ApplicationController
-  before_filter :require_blog_entry, :only => [:show, :destroy]
+  before_filter :require_blog_entry, :only => [:show, :edit, :destroy]
   
  	def index
  		@blog_all = BlogEntry.all
@@ -23,11 +23,9 @@ class BlogEntriesController < ApplicationController
     @blog_entry.destroy
     redirect_to blog_entries_path
   end
-
-  def upsdate
-
-  end
-
+ 
+ def edit
+ end
 
 protected
   def require_blog_entry

@@ -72,9 +72,15 @@ class BlogEntriesControllerTest < ActionController::TestCase
     end
   end
 
-  context "#update" do
-    should "render correctly" do
 
+
+  context "#edit" do
+    setup do
+        @blog_entry = BlogEntry.create :title => 'foo', :body => 'bar'
+    end
+    
+    should "render correctly" do
+      get :edit, :id => @blog_entry.id
       assert_response 200
     end
   end
