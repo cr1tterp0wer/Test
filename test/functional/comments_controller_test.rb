@@ -21,7 +21,17 @@ class CommentsControllerTest < ActionController::TestCase
   context "#destroy" do
      setup do
         @blog_entry = BlogEntry.create :title => 'foo', :body => 'bar'
+        @blog_entry.comments.create( body: "helloworld", commenter: "foo")
+        @count = @blog_entry.comments.count
       end
+
+      should "delete a comment" do
+        @blog_entry.comments.last.delete
+        assert @count != @blog_entry.comments.count
+      end
+
+    #should "redirect to blog_entry" do
+    # end
 
     # should delete the comment
     # should redirect back to the blog entry 
