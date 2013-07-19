@@ -29,10 +29,9 @@ class BlogEntriesController < ApplicationController
 
  def update
     @blog_entry.update_attributes(blog_entry_params)
-    @blog_entry.dashify
-    @blog_entry.mashify
+    @blog_entry.mash_dash!
     @blog_entry.save
-    
+
     redirect_to blog_entry_path(id: @blog_entry.id)
  end
 
