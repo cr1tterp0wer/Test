@@ -26,17 +26,16 @@ class CommentsControllerTest < ActionController::TestCase
 
     should "delete a comment" do
       assert_difference("@blog_entry.comments.count", -1) do
-        @blog_entry.comments.last.delete
+        delete :destroy, { blog_entry_id: @blog_entry.id, id: @blog_entry.comments.last.id }
       end
       assert BlogEntry.find_by_id(@blog_entry.id).comments.last.nil?
     end
 
-    should "redirect" do
+    should "redirect to blog_entries" do
+      delete :destroy, { blog_entry_id: @blog_entry.id, id: @blog_entry.comments.last.id }
+      
+      assert_redirected_to blog_entry_path @blog_entry.id
     end
-    #should "redirect to blog_entry" do
-    # end
-
-    # should delete the comment
-    # should redirect back to the blog entry 
   end
+
 end
