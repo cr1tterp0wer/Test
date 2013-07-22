@@ -1,6 +1,6 @@
 <div class="hero-unit row-fluid">
   <span class="span3 wrapping">
-    <h2><%= @blog_entry.mash_dash! %></h2>
+    <h2><%= @blog_entry.formatted_title %></h2>
       <div class="row-fluid">
         <%= button_to 'Delete-User', @del_entry, :method => :delete, data: { confirm: 'Are you sure?'}, class: "btn btn-mini btn-default" %>
         <%= form_for ([@blog_entry, @blog_entry.comments.build]) do |f| %>

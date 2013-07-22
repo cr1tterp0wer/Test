@@ -3,29 +3,28 @@ class BlogEntry < ActiveRecord::Base
 
   attr_accessible :body, :title, :mashify_title, :dashify_title
   validates :body, :title, presence: true,
-            length: { minimum: 1}
+            length: { minimum: 1 }
 
-  def dashify!
-    if(self.dashify_title)
-     self.title = self.title.upcase.gsub('-','').strip.chars.join('-')
-    else
-      self.title
-    end
+  def dashify(str)
+    str = str.to_s.upcase.gsub('-','').strip.chars.join('-')
+    return str
   end
   
-  def mashify!
-    if(self.mashify_title)
-      self.title = self.title.upcase.gsub('*', '').strip.chars.join('*')
-    else
-      self.title
-    end
+  def mashify(str)
+    str = str.to_s.upcase.gsub('*', '').strip.chars.join('*').to_s
+    return str
   end
 
-  def mash_dash!
-    mashify!
-    dashify!
-    return self.title
+  def formatted_title
+    str = self.title
+
+    if( self.mashify_title? )
+      str = self.mashify(str)
+    end
+    if( self.dashify_title? )
+      str = self.dashify(str)
+    end
+    return str
   end
 
 end
-

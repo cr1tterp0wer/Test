@@ -29,6 +29,8 @@ class BlogEntryTest < ActiveSupport::TestCase
     setup do
       @blog_entry = BlogEntry.new
       @blog_entry.title = 'foo bar'
+      @blog_entry.mashify_title = true
+      @blog_entry.dashify_title = true
     end
 
     should "call mashify! and dashify!" do
