@@ -16,11 +16,11 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="brand" href= "<%= new_blog_entry_path %>" >New Blog</a>
-          <div class="nav-collapse collapse">
+        <%= link_to 'Blog', root_path, :class => 'brand' %>
+        <div class="nav-collapse collapse">
             <ul class="nav">
-              <li class="active"><a href= '/' >Home</a></li>
-              <li><a href= "<%= new_blog_entry_path %>" >New blog entry</a></li>
+              <%= content_tag 'li', link_to('Home', root_path), :class => "#{'active' if request.path == root_path}" %>
+              <%= content_tag 'li', link_to('New Blog Entry', new_blog_entry_path), :class => "#{'active' if request.path == new_blog_entry_path}" %>
             </ul>
         </div>
       </div>
