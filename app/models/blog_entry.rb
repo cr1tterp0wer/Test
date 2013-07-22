@@ -5,30 +5,26 @@ class BlogEntry < ActiveRecord::Base
   validates :body, :title, presence: true,
  					length: { minimum: 1}
 
-
   def dashify!
     if(self.dashify_title)
-      self.body = self.body.upcase.gsub('-','').strip.chars.join('-')
+     self.title =  self.title.upcase.gsub('-','').strip.chars.join('-')
     else
-      self.body = self.body.downcase.gsub('- ',' ').strip.chars.join('') 
-      self.body = self.body.gsub(' -', ' ').strip.chars.join('')   
-      self.body = self.body.gsub('-', '').strip.chars.join('')
+      self.title
     end
   end
   
   def mashify!
     if(self.mashify_title)
-      self.body = self.body.upcase.gsub('*', '').strip.chars.join('*')
+      self.title = self.title.upcase.gsub('*', '').strip.chars.join('*')
     else
-      self.body = self.body.downcase.gsub('* ', ' ').strip.chars.join('')
-      self.body = self.body.gsub(' *', ' ').strip.chars.join('')
-      self.body = self.body.gsub('*', '').strip.chars.join('')
+      self.title
     end
   end
 
   def mash_dash!
-    dashify!
     mashify!
+    dashify!
+    return self.title
   end
 
 end
