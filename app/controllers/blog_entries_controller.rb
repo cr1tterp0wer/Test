@@ -12,7 +12,6 @@ class BlogEntriesController < ApplicationController
     @blog_entry = BlogEntry.new
   end
 
-
   def create
     @blog_entry = BlogEntry.new(params[:blog_entry])
     @blog_entry.save!

@@ -1,0 +1,23 @@
+<div class="row-fluid">
+  <div class="span6">
+    <%= form_for @user, html: {class: 'form-horizontal'} do |f| %>
+    <legend class="blue-wrap" id="align"> Create a new account </legend>
+    <div class="control-group">
+      <%= f.label :login, class: "control-label" %>
+      <div class="controls">
+        <%= f.text_field :login, placeholder: 'title', class: "span6" %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :password_digest, class: "control-label" %>
+      <div class="controls">
+        <%= f.text_field :password_digest, placeholder: 'Password...', class: "input-small, span6", type: "password" %>
+      </div>
+    </div>
+    <div class="form-actions">
+      <%= f.submit 'Submit', class: "btn, btn-default, btn-primary" %>
+    </div>
+    <% end %>
+  </div>
+</div>
+
