@@ -2,8 +2,9 @@ class BlogEntry < ActiveRecord::Base
   has_many :comments 
 
   attr_accessible :body, :title, :mashify_title, :dashify_title
-  validates :body, :title, presence: true,
-            length: { minimum: 1 }
+
+  validates :body, :presence => true
+  validates :title, :presence => true
 
   def dashify(str)
     str = str.to_s.upcase.gsub('-','').strip.chars.join('-')
