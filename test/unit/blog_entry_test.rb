@@ -20,13 +20,6 @@ class BlogEntryTest < ActiveSupport::TestCase
 
       assert_equal "M*A*S*H", @blog_entry.mashify!
     end
-
-    should "remove all *'s when not checked" do
-      @blog_entry.title = "mash"
-      @blog_entry.mashify_title = false
-
-      assert_equal "mash", @blog_entry.mashify!
-    end
   end
 
   context '#dashify!' do
@@ -41,13 +34,6 @@ class BlogEntryTest < ActiveSupport::TestCase
 
   	  assert_equal "F-O-O", @blog_entry.dashify!
     end
-
-    should "Remove all -'s When not checked" do
-      @blog_entry.title = "foo"
-      @blog_entry.dashify_title = false
-      
-      assert_equal "foo", @blog_entry.dashify!
-    end
   end
 
   context '#mash_dash!' do
@@ -61,14 +47,6 @@ class BlogEntryTest < ActiveSupport::TestCase
       @blog_entry.mashify_title = true;
 
       assert_equal "F-*-O-*-O-*- -*-B-*-A-*-R", @blog_entry.mash_dash!
-    end
-
-    should "remove both *'s and -'s" do 
-      @blog_entry.title = "foo bar"
-      @blog_entry.dashify_title = false;
-      @blog_entry.mashify_title = false;
-
-      assert_equal "foo bar", @blog_entry.mash_dash!
     end
   end
 end
