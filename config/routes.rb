@@ -53,6 +53,8 @@ Test::Application.routes.draw do
      resources :comments, :only => [:create, :destroy]
    end
 
+   resources :users, :only => [ :new,:create ]
+
 #match "blog_entries/home_link" => 'blog_entry#home_link'
 
   # get "/blog_entries/homelink" => "blog_entries#homelink"

@@ -14,4 +14,16 @@ class UserTest < ActiveSupport::TestCase
       assert u.errors[:password_digest].present?
     end
   end
+
+  context "#password=" do
+    should "generate a secure hash for the user" do
+      u = User.new
+      u.password = "it's a secret"
+
+      assert !u.password_digest.nil?
+      assert_not_equal "it's a secret", u.password_digest
+      assert u.password.nil?
+      assert_equal "$2a$10$Zq9yalZd2YMeaVrgxJKy8Ot5ZFjT2MVkSEKlThQdk5bqH3/pYdNju", u.password_digest
+    end
+  end
 end
