@@ -1,52 +1,43 @@
 require 'test_helper'
 
 class BlogEntryTest < ActiveSupport::TestCase
-  context "#mashify!" do
+  context "#mashify" do
     setup do
       @blog_entry = BlogEntry.new
-      @blog_entry.title = "mash"
     end
 
     should "look like the mash logo" do
-      @blog_entry.title = "mash"
-      @blog_entry.mashify_title = true;
-
-      assert_equal "M*A*S*H", @blog_entry.mashify!
+      assert_equal "M*A*S*H", @blog_entry.mashify("mash")
     end
 
     should "remove whitespace" do
-      @blog_entry.title = "        mash         "
-      @blog_entry.mashify_title = true
-
-      assert_equal "M*A*S*H", @blog_entry.mashify!
+      assert_equal "M*A*S*H", @blog_entry.mashify("  mash  ")
     end
   end
 
-  context '#dashify!' do
+  context '#dashify' do
     setup do
       @blog_entry = BlogEntry.new
-      @blog_entry.title = "foo"
     end
 
     should "insert - between chars When checked" do
-      @blog_entry.title = "foo"
-      @blog_entry.dashify_title = true;
-
-  	  assert_equal "F-O-O", @blog_entry.dashify!
+  	  assert_equal "F-O-O", @blog_entry.dashify("foo")
     end
   end
 
-  context '#mash_dash!' do
+  context '#formatted_title' do
     setup do
       @blog_entry = BlogEntry.new
+      @blog_entry.title = 'foo bar'
     end
 
-    should "call mashify! and dashify!" do 
-      @blog_entry.title = "foo bar"
-      @blog_entry.dashify_title = true;
-      @blog_entry.mashify_title = true;
+    should "call mashify! and dashify!" do
+      assert_equal "F-*-O-*-O-*- -*-B-*-A-*-R", @blog_entry.formatted_title
+    end
 
-      assert_equal "F-*-O-*-O-*- -*-B-*-A-*-R", @blog_entry.mash_dash!
+    should "not modify the title" do
+      assert_equal "F-*-O-*-O-*- -*-B-*-A-*-R", @blog_entry.formatted_title
+      assert_equal 'foo bar', @blog_entry.title
     end
   end
 end
