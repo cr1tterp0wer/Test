@@ -8,12 +8,15 @@ class UsersController < ApplicationController
 
   def create  
     @user = User.new(params[:user])
-    
+  
     unless @user.save
       render :action => :new and return
+      @users = User.all
+    else
+      @users = User.all
+      redirect_to root_path
     end
-    @users = User.all
-    redirect_to root_path
+
   end
 
 protected

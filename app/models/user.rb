@@ -8,8 +8,11 @@ class User < ActiveRecord::Base
   validates :password_digest, presence: true
 
 
+
   def password=(str)
-    self.password_digest = Password.create(str).to_s
+    if str.present?
+      self.password_digest = Password.create(str).to_s
+    end
   end
 
   def password

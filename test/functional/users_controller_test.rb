@@ -25,6 +25,13 @@ class UsersControllerTest < ActionController::TestCase
       end
     end
 
+    should "not create when password is empty str" do
+      assert_difference("User.count", 0) do
+        post :create, :user => { :login => "foo" , :password => "" }
+      end
+    end
+
+
     should "redirect to root_path" do
       post :create, :user => { :login => "foo", :password => "bar" }
 
