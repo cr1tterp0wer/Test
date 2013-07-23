@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :require_params, only:[:create]
+ # before_filter :require_params, only:[:create]
 
   def index
   end
@@ -17,7 +17,7 @@ class UsersController < ApplicationController
 
 protected
   def require_params
-    unless params[:login] != nil || params[:password_digest]
+    if User.find_by_id(:id).login
       render :inline => 'Login/Password cannot remain blank!', :status => 404 and return false
     end
   end
