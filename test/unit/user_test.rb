@@ -36,7 +36,5 @@ class UserTest < ActiveSupport::TestCase
     u = User.new
 
     assert u.password == nil
-
   end
-
 end
