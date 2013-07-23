@@ -54,6 +54,7 @@ Test::Application.routes.draw do
    end
 
    resources :users, :only => [ :new,:create ]
+   resources :sessions, :only => [:new, :create, :destroy]
 
 #match "blog_entries/home_link" => 'blog_entry#home_link'
 

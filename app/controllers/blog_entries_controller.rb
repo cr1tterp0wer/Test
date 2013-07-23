@@ -1,11 +1,15 @@
 class BlogEntriesController < ApplicationController
   before_filter :require_blog_entry, :only => [:show, :update, :edit, :destroy]
   
- 	def index
- 		@blog_all = BlogEntry.all
+  def index
+   @blog_all = BlogEntry.all
+
+   puts 'y' * 80
+   p session
   end
 
   def show
+   p session
   end
 
   def new
