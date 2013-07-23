@@ -2,7 +2,7 @@
   <div class="span12 centers">
     <legend class="blue-wrap" id="align"><strong>All Bloggers</strong></legend>
         <ul class="nav nav-pills offset1">
-          <% @user_all.each do |f| %>
+          <% @users.each do |f| %>
           <li class="span3" id="align">
             <a href= <%= root_path %> ><h4><%= f.login %></h4></a>
           </li>

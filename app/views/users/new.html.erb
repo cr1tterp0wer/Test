@@ -1,5 +1,8 @@
 <div class="row-fluid">
   <div class="span6">
+    <% if @user.errors.present? %>
+      <p class="text-error">Please check all fields carefully</p>
+    <% end %>
     <%= form_for @user, html: {class: 'form-horizontal'} do |f| %>
     <legend class="blue-wrap" id="align"> Create a new account </legend>
     <div class="control-group">
