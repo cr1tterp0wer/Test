@@ -26,4 +26,17 @@ class UserTest < ActiveSupport::TestCase
       assert u.password == "it's a secret"
     end
   end
+
+  should "create a new accout" do
+    u = User.new( { :login => "foo", :password => "bar" } )
+    assert u.save
+  end
+
+  should "be nil when password_digest is nil" do
+    u = User.new
+
+    assert u.password == nil
+
+  end
+
 end

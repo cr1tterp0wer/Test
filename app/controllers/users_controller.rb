@@ -8,10 +8,11 @@ class UsersController < ApplicationController
 
   def create  
     @user = User.new(params[:user])
-    @users = User.all
+
     unless @user.save
       render :action => :new and return
     end
+    @users = User.all
   end
 
 protected
