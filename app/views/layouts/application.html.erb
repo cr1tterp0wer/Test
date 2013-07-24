@@ -23,9 +23,9 @@
               <%= content_tag 'li', link_to('New Blog Entry', new_blog_entry_path), :class => "#{'active' if request.path == new_blog_entry_path}" %>
               <%= content_tag 'li', link_to('Create new user' , new_user_path), :class => "#{'active' if request.path == new_user_path}" %>
               <% if current_user %>
-              <%= content_tag 'li', link_to('Logout' , new_session_path), :class => "#{'active' if request.path == new_user_path}" %>
+              <%= content_tag 'li', link_to('Logout' , new_session_path), :class => "#{'active' if request.path == new_session_path}" %>
               <% else %>
-              <%= content_tag 'li', link_to('Login' , new_session_path), :class => "#{'active' if request.path == new_user_path}" %>
+              <%= content_tag 'li', link_to('Login' , new_session_path), :class => "#{'active' if request.path == new_session_path}" %>
               <% end %>
             </ul>
         </div>
