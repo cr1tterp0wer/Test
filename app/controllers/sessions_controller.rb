@@ -11,8 +11,8 @@ class SessionsController < ApplicationController
     @user = User.find_by_login params[:login]
     
     if @user.password == @temp_pass
-      logged_in = true
-      p "true" * 80
+      session[:user_id] = @user.id
+      
     else
       logged_in = false
       p "false" * 80
