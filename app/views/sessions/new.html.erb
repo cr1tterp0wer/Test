@@ -1,0 +1,21 @@
+<div class="row-fluid">
+  <div class="span6">
+    <legend class="blue-wrap" id="align"> Login </legend>
+    <%= form_tag sessions_path, :method => :create %>
+    <div class="control-group"> 
+      <div class="controls">
+        <%= label_tag :login, nil, class: 'control-label' %>
+        <%= text_field_tag :login, nil, placeholder: 'Username', class: 'span6' %>
+      </div>
+    </div>
+    <div class="control-group">
+      <div class="controls">
+        <%= label_tag :password, nil, class: 'control-label' %>
+        <%= password_field_tag :password, nil, placeholder: 'Password...', class: 'span6' %>
+      </div>
+    </div>
+    <div class="form-actions">
+      <%= submit_tag 'Login' %>
+    </div>
+  </div>
+</div>

@@ -3,13 +3,9 @@ class BlogEntriesController < ApplicationController
   
   def index
    @blog_all = BlogEntry.all
-
-   puts 'y' * 80
-   p session
   end
 
   def show
-   p session
   end
 
   def new
